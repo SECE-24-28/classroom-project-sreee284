@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuickRecharge - Mobile Recharge</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center">
+                    <span class="text-2xl font-bold text-red-600"><i class="fas fa-mobile-alt mr-2"></i>QuickRecharge</span>
+                </div>
+                <div class="flex space-x-4">
+                    <a href="login.html" class="btn-outline">Login</a>
+                    <a href="signup.html" class="btn-red">Sign Up</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="bg-red-600 text-white py-20">
+        <div class="max-w-6xl mx-auto px-4 text-center">
+            <h1 class="text-4xl font-bold mb-4">Instant Mobile Recharge</h1>
+            <p class="text-xl mb-8">Fast, secure, and reliable recharge for all operators</p>
+            <a href="signup.html" class="bg-white text-red-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100">Get Started</a>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section class="py-16 bg-white">
+        <div class="max-w-6xl mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">Our Services</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="text-center p-6 bg-gray-50 rounded-lg">
+                    <div class="text-4xl mb-4">📱</div>
+                    <h3 class="text-xl font-semibold mb-2">Mobile Recharge</h3>
+                    <p class="text-gray-600">All operators supported</p>
+                </div>
+                <div class="text-center p-6 bg-gray-50 rounded-lg">
+                    <div class="text-4xl mb-4">📺</div>
+                    <h3 class="text-xl font-semibold mb-2">DTH Recharge</h3>
+                    <p class="text-gray-600">Quick DTH recharge</p>
+                </div>
+                <div class="text-center p-6 bg-gray-50 rounded-lg">
+                    <div class="text-4xl mb-4">📶</div>
+                    <h3 class="text-xl font-semibold mb-2">Data Cards</h3>
+                    <p class="text-gray-600">Instant data recharge</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Popular Plans -->
+    <section class="py-16 bg-gray-50">
+        <div class="max-w-6xl mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">Popular Plans</h2>
+            
+            <!-- Loading State -->
+            <div id="loading" class="text-center py-8">
+                <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-red-600 mx-auto"></div>
+                <p class="mt-4 text-gray-600">Loading plans...</p>
+            </div>
+            
+            <!-- Error State -->
+            <div id="error" class="hidden text-center py-8">
+                <div class="text-red-600 text-4xl mb-4">
+                    <i class="fas fa-exclamation-triangle"></i>
+                </div>
+                <p class="text-gray-600 mb-4">Failed to load plans. Please try again later.</p>
+                <button onclick="loadPlans()" class="btn-red">
+                    <i class="fas fa-redo mr-2"></i>Retry
+                </button>
+            </div>
+            
+            <!-- Plans Container -->
+            <div id="plans-container" class="grid md:grid-cols-4 gap-6 hidden">
+                <!-- Plans will be dynamically inserted here -->
+            </div>
+            
+            <div class="text-center mt-8">
+                <a href="plans.html" class="btn-outline">View All Plans</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section class="py-16 bg-white">
+        <div class="max-w-6xl mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">Why Choose Us?</h2>
+            <div class="grid md:grid-cols-4 gap-6 text-center">
+                <div>
+                    <div class="text-3xl mb-2">⚡</div>
+                    <h3 class="font-semibold">Instant</h3>
+                    <p class="text-sm text-gray-600">Quick processing</p>
+                </div>
+                <div>
+                    <div class="text-3xl mb-2">🔒</div>
+                    <h3 class="font-semibold">Secure</h3>
+                    <p class="text-sm text-gray-600">Safe transactions</p>
+                </div>
+                <div>
+                    <div class="text-3xl mb-2">🎯</div>
+                    <h3 class="font-semibold">Reliable</h3>
+                    <p class="text-sm text-gray-600">99% success rate</p>
+                </div>
+                <div>
+                    <div class="text-3xl mb-2">💰</div>
+                    <h3 class="font-semibold">Best Offers</h3>
+                    <p class="text-sm text-gray-600">Great cashback</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="max-w-6xl mx-auto px-4 text-center">
+            <p>&copy; 2024 QuickRecharge. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="api.js"></script>
+    <script>
+        const plansContainer = document.getElementById('plans-container');
+        const loadingElement = document.getElementById('loading');
+        const errorElement = document.getElementById('error');
+        
+        function createPlanCard(plan) {
+            const isPopular = plan.amount === 299;
+            return `
+                <div class="bg-white rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow ${isPopular ? 'border-2 border-red-500' : ''}">
+                    <div class="text-center">
+                        ${isPopular ? '<div class="bg-red-500 text-white text-xs px-2 py-1 rounded mb-2">POPULAR</div>' : ''}
+                        <div class="text-2xl font-bold text-red-600 mb-2">₹${plan.amount}</div>
+                        <div class="text-gray-600 mb-4">${plan.validity || '28 Days'}</div>
+                        <div class="space-y-2 text-sm">
+                            <div><i class="fas fa-wifi text-red-500 mr-1"></i> ${plan.data || '2GB/Day'}</div>
+                            <div><i class="fas fa-phone text-red-500 mr-1"></i> ${plan.calls || 'Unlimited Calls'}</div>
+                            <div><i class="fas fa-sms text-red-500 mr-1"></i> ${plan.sms || '100 SMS/Day'}</div>
+                        </div>
+                        <a href="signup.html" class="btn-red w-full block text-center mt-4">Choose Plan</a>
+                    </div>
+                </div>
+            `;
+        }
+        
+        async function loadPlans() {
+            try {
+                loadingElement.classList.remove('hidden');
+                errorElement.classList.add('hidden');
+                plansContainer.classList.add('hidden');
+                
+                const plans = await mockAPI.getPlans();
+                const displayPlans = plans.slice(0, 4);
+                plansContainer.innerHTML = displayPlans.map(createPlanCard).join('');
+                
+                loadingElement.classList.add('hidden');
+                plansContainer.classList.remove('hidden');
+            } catch (error) {
+                console.error('Failed to load plans:', error);
+                loadingElement.classList.add('hidden');
+                errorElement.classList.remove('hidden');
+            }
+        }
+        
+        document.addEventListener('DOMContentLoaded', loadPlans);
+    </script>
+</body>
+</html>

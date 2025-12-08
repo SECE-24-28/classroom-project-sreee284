@@ -1,0 +1,80 @@
+{
+  "plans": [
+    {
+      "id": 1,
+      "amount": 199,
+      "validity": "28 Days",
+      "data": "1.5GB/Day",
+      "calls": "Unlimited Calls",
+      "sms": "100 SMS/Day",
+      "operator": "airtel"
+    },
+    {
+      "id": 2,
+      "amount": 299,
+      "validity": "28 Days", 
+      "data": "2GB/Day",
+      "calls": "Unlimited Calls",
+      "sms": "100 SMS/Day",
+      "operator": "jio"
+    },
+    {
+      "id": 3,
+      "amount": 399,
+      "validity": "56 Days",
+      "data": "2GB/Day", 
+      "calls": "Unlimited Calls",
+      "sms": "100 SMS/Day",
+      "operator": "vi"
+    },
+    {
+      "id": 4,
+      "amount": 599,
+      "validity": "84 Days",
+      "data": "2GB/Day",
+      "calls": "Unlimited Calls", 
+      "sms": "100 SMS/Day",
+      "operator": "bsnl"
+    },
+    {
+      "id": 5,
+      "amount": 149,
+      "validity": "24 Days",
+      "data": "1GB/Day",
+      "calls": "Unlimited Calls",
+      "sms": "100 SMS/Day",
+      "operator": "airtel"
+    },
+    {
+      "id": 6,
+      "amount": 999,
+      "validity": "84 Days",
+      "data": "3GB/Day",
+      "calls": "Unlimited Calls",
+      "sms": "100 SMS/Day",
+      "operator": "jio"
+    }
+  ],
+  "operators": [
+    {
+      "id": "airtel",
+      "name": "Airtel",
+      "color": "#E31E24"
+    },
+    {
+      "id": "jio", 
+      "name": "Jio",
+      "color": "#0066CC"
+    },
+    {
+      "id": "vi",
+      "name": "Vi",
+      "color": "#9C1A7A"
+    },
+    {
+      "id": "bsnl",
+      "name": "BSNL", 
+      "color": "#1B5E20"
+    }
+  ]
+}
