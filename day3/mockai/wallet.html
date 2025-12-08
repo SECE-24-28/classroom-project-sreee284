@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wallet - QuickRecharge</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center">
+                    <span class="text-2xl font-bold text-red-600"><i class="fas fa-mobile-alt mr-2"></i>QuickRecharge</span>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <a href="dashboard.html" class="text-gray-700 hover:text-red-600">Dashboard</a>
+                    <span class="text-gray-700">Balance: ₹<span id="balance">500</span></span>
+                    <button id="logoutBtn" class="text-red-600 hover:underline">Logout</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="max-w-4xl mx-auto px-4 py-8">
+        <h1 class="text-3xl font-bold mb-8">My Wallet</h1>
+
+        <div class="grid lg:grid-cols-3 gap-8">
+            <!-- Add Money -->
+            <div class="lg:col-span-2 bg-white rounded-lg shadow-md p-6">
+                <h2 class="text-xl font-bold mb-6">Add Money to Wallet</h2>
+                
+                <form id="addMoneyForm" class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Amount</label>
+                        <input type="number" id="amount" required class="input" placeholder="Enter amount" min="10" max="10000">
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Payment Method</label>
+                        <div class="space-y-2">
+                            <label class="flex items-center">
+                                <input type="radio" name="payment" value="upi" checked class="mr-2">
+                                <span>UPI</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="radio" name="payment" value="card" class="mr-2">
+                                <span>Credit/Debit Card</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="radio" name="payment" value="netbanking" class="mr-2">
+                                <span>Net Banking</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn-red w-full">Add Money</button>
+                </form>
+            </div>
+
+            <!-- Wallet Info -->
+            <div class="space-y-6">
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <h3 class="font-semibold mb-4">Current Balance</h3>
+                    <div class="text-3xl font-bold text-red-600">₹<span id="walletBalance">500</span></div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <h3 class="font-semibold mb-4">Quick Add</h3>
+                    <div class="grid grid-cols-2 gap-2">
+                        <button class="quick-add border border-gray-300 rounded p-2 hover:border-red-500" data-amount="100">₹100</button>
+                        <button class="quick-add border border-gray-300 rounded p-2 hover:border-red-500" data-amount="200">₹200</button>
+                        <button class="quick-add border border-gray-300 rounded p-2 hover:border-red-500" data-amount="500">₹500</button>
+                        <button class="quick-add border border-gray-300 rounded p-2 hover:border-red-500" data-amount="1000">₹1000</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Transaction History -->
+        <div class="bg-white rounded-lg shadow-md p-6 mt-8">
+            <h2 class="text-xl font-bold mb-6">Transaction History</h2>
+            <div id="transactionHistory" class="space-y-3">
+                <!-- Transactions will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <script src="api.js"></script>
+    <script>
+        // Check login
+        if (!localStorage.getItem('userLoggedIn')) {
+            window.location.href = 'login.html';
+        }
+
+        // Update balance display
+        function updateBalance() {
+            const balance = localStorage.getItem('walletBalance') || '500';
+            document.getElementById('balance').textContent = balance;
+            document.getElementById('walletBalance').textContent = balance;
+        }
+
+        updateBalance();
+
+        // Logout
+        document.getElementById('logoutBtn').addEventListener('click', function() {
+            localStorage.clear();
+            window.location.href = 'index.html';
+        });
+
+        // Quick add buttons
+        document.querySelectorAll('.quick-add').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.getElementById('amount').value = this.dataset.amount;
+            });
+        });
+
+        // Add money form with API integration
+        document.getElementById('addMoneyForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const amount = parseInt(document.getElementById('amount').value);
+            const payment = document.querySelector('input[name="payment"]:checked').value;
+            
+            if (!amount || amount < 10) {
+                alert('Please enter a valid amount (minimum ₹10)');
+                return;
+            }
+            
+            const btn = this.querySelector('button');
+            btn.textContent = 'Processing...';
+            btn.disabled = true;
+            
+            try {
+                // Simulate payment processing
+                await new Promise(resolve => setTimeout(resolve, 2000));
+                
+                const currentBalance = parseInt(localStorage.getItem('walletBalance') || '500');
+                const newBalance = currentBalance + amount;
+                localStorage.setItem('walletBalance', newBalance.toString());
+                
+                // Add transaction record
+                const transactions = JSON.parse(localStorage.getItem('walletTransactions') || '[]');
+                transactions.unshift({
+                    type: 'credit',
+                    amount: amount,
+                    method: payment,
+                    date: new Date().toLocaleString(),
+                    status: 'Success',
+                    transactionId: 'TXN' + Date.now()
+                });
+                localStorage.setItem('walletTransactions', JSON.stringify(transactions));
+                
+                updateBalance();
+                loadTransactions();
+                
+                alert(`₹${amount} added successfully!`);
+                this.reset();
+                
+            } catch (error) {
+                alert('Payment failed: ' + error.message);
+            } finally {
+                btn.textContent = 'Add Money';
+                btn.disabled = false;
+            }
+        });
+
+        // Load transaction history
+        function loadTransactions() {
+            const transactions = JSON.parse(localStorage.getItem('walletTransactions') || '[]');
+            const container = document.getElementById('transactionHistory');
+            
+            if (transactions.length === 0) {
+                container.innerHTML = '<p class="text-gray-500">No transactions yet</p>';
+                return;
+            }
+            
+            container.innerHTML = transactions.map(txn => `
+                <div class="flex justify-between items-center p-3 border-b">
+                    <div>
+                        <div class="font-medium">${txn.type === 'credit' ? '+' : '-'}₹${txn.amount}</div>
+                        <div class="text-sm text-gray-600">${txn.method || 'Recharge'} • ${txn.date}</div>
+                    </div>
+                    <span class="text-sm ${txn.status === 'Success' ? 'text-green-600' : 'text-red-600'}">${txn.status}</span>
+                </div>
+            `).join('');
+        }
+
+        loadTransactions();
+    </script>
+</body>
+</html>

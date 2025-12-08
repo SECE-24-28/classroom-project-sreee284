@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plans - QuickRecharge</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center">
+                    <span class="text-2xl font-bold text-red-600"><i class="fas fa-mobile-alt mr-2"></i>QuickRecharge</span>
+                </div>
+                <div class="flex space-x-4">
+                    <a href="index.html" class="text-gray-700 hover:text-red-600">Home</a>
+                    <a href="login.html" class="btn-outline">Login</a>
+                    <a href="signup.html" class="btn-red">Sign Up</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="max-w-6xl mx-auto px-4 py-8">
+        <h1 class="text-3xl font-bold text-center mb-8">Recharge Plans</h1>
+
+        <!-- Operator Filter -->
+        <div class="bg-white rounded-lg shadow-md p-6 mb-8">
+            <h2 class="text-xl font-bold mb-4">Select Operator</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <button class="operator-btn border-2 border-gray-200 rounded-lg p-4 hover:border-red-500" data-operator="airtel">
+                    <div class="text-center">
+                        <div class="text-2xl mb-2 text-red-600"><i class="fas fa-mobile-alt"></i></div>
+                        <div class="font-semibold">Airtel</div>
+                    </div>
+                </button>
+                <button class="operator-btn border-2 border-gray-200 rounded-lg p-4 hover:border-red-500" data-operator="jio">
+                    <div class="text-center">
+                        <div class="text-2xl mb-2 text-red-600"><i class="fas fa-mobile-alt"></i></div>
+                        <div class="font-semibold">Jio</div>
+                    </div>
+                </button>
+                <button class="operator-btn border-2 border-gray-200 rounded-lg p-4 hover:border-red-500" data-operator="vi">
+                    <div class="text-center">
+                        <div class="text-2xl mb-2 text-red-600"><i class="fas fa-mobile-alt"></i></div>
+                        <div class="font-semibold">Vi</div>
+                    </div>
+                </button>
+                <button class="operator-btn border-2 border-gray-200 rounded-lg p-4 hover:border-red-500" data-operator="bsnl">
+                    <div class="text-center">
+                        <div class="text-2xl mb-2 text-red-600"><i class="fas fa-mobile-alt"></i></div>
+                        <div class="font-semibold">BSNL</div>
+                    </div>
+                </button>
+            </div>
+        </div>
+
+        <!-- Plans Grid -->
+        <div id="plansContainer">
+            <!-- Popular Plans -->
+            <div class="mb-8">
+                <h2 class="text-2xl font-bold mb-6">Popular Plans</h2>
+                <div class="grid md:grid-cols-3 lg:grid-cols-4 gap-6">
+                    <div class="bg-white rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow border-2 border-red-500">
+                        <div class="text-center">
+                            <div class="bg-red-500 text-white text-xs px-2 py-1 rounded mb-2">POPULAR</div>
+                            <div class="text-2xl font-bold text-red-600 mb-2">₹199</div>
+                            <div class="text-gray-600 mb-4">28 Days</div>
+                            <div class="space-y-2 text-sm mb-4">
+                                <div><i class="fas fa-wifi text-red-500 mr-1"></i> 1.5GB/Day</div>
+                                <div><i class="fas fa-phone text-red-500 mr-1"></i> Unlimited Calls</div>
+                                <div><i class="fas fa-sms text-red-500 mr-1"></i> 100 SMS/Day</div>
+                            </div>
+                            <a href="signup.html" class="btn-red w-full block text-center">Choose Plan</a>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow">
+                        <div class="text-center">
+                            <div class="text-2xl font-bold text-red-600 mb-2">₹299</div>
+                            <div class="text-gray-600 mb-4">28 Days</div>
+                            <div class="space-y-2 text-sm mb-4">
+                                <div><i class="fas fa-wifi text-red-500 mr-1"></i> 2GB/Day</div>
+                                <div><i class="fas fa-phone text-red-500 mr-1"></i> Unlimited Calls</div>
+                                <div><i class="fas fa-sms text-red-500 mr-1"></i> 100 SMS/Day</div>
+                            </div>
+                            <a href="signup.html" class="btn-red w-full block text-center">Choose Plan</a>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow">
+                        <div class="text-center">
+                            <div class="text-2xl font-bold text-red-600 mb-2">₹399</div>
+                            <div class="text-gray-600 mb-4">56 Days</div>
+                            <div class="space-y-2 text-sm mb-4">
+                                <div><i class="fas fa-wifi text-red-500 mr-1"></i> 2GB/Day</div>
+                                <div><i class="fas fa-phone text-red-500 mr-1"></i> Unlimited Calls</div>
+                                <div><i class="fas fa-sms text-red-500 mr-1"></i> 100 SMS/Day</div>
+                            </div>
+                            <a href="signup.html" class="btn-red w-full block text-center">Choose Plan</a>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow">
+                        <div class="text-center">
+                            <div class="text-2xl font-bold text-red-600 mb-2">₹599</div>
+                            <div class="text-gray-600 mb-4">84 Days</div>
+                            <div class="space-y-2 text-sm mb-4">
+                                <div><i class="fas fa-wifi text-red-500 mr-1"></i> 2GB/Day</div>
+                                <div><i class="fas fa-phone text-red-500 mr-1"></i> Unlimited Calls</div>
+                                <div><i class="fas fa-sms text-red-500 mr-1"></i> 100 SMS/Day</div>
+                            </div>
+                            <a href="signup.html" class="btn-red w-full block text-center">Choose Plan</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Full Talktime -->
+            <div class="mb-8">
+                <h2 class="text-2xl font-bold mb-6">Full Talktime</h2>
+                <div class="grid md:grid-cols-3 lg:grid-cols-4 gap-6">
+                    <div class="bg-white rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow">
+                        <div class="text-center">
+                            <div class="text-2xl font-bold text-red-600 mb-2">₹10</div>
+                            <div class="text-gray-600 mb-4">Full Talktime</div>
+                            <div class="space-y-2 text-sm mb-4">
+                                <div><i class="fas fa-rupee-sign text-red-500 mr-1"></i> ₹10 Talktime</div>
+                                <div><i class="fas fa-clock text-red-500 mr-1"></i> 18 Days</div>
+                            </div>
+                            <a href="signup.html" class="btn-red w-full block text-center">Choose Plan</a>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow">
+                        <div class="text-center">
+                            <div class="text-2xl font-bold text-red-600 mb-2">₹20</div>
+                            <div class="text-gray-600 mb-4">Full Talktime</div>
+                            <div class="space-y-2 text-sm mb-4">
+                                <div><i class="fas fa-rupee-sign text-red-500 mr-1"></i> ₹20 Talktime</div>
+                                <div><i class="fas fa-clock text-red-500 mr-1"></i> 18 Days</div>
+                            </div>
+                            <a href="signup.html" class="btn-red w-full block text-center">Choose Plan</a>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow">
+                        <div class="text-center">
+                            <div class="text-2xl font-bold text-red-600 mb-2">₹50</div>
+                            <div class="text-gray-600 mb-4">Full Talktime</div>
+                            <div class="space-y-2 text-sm mb-4">
+                                <div><i class="fas fa-rupee-sign text-red-500 mr-1"></i> ₹50 Talktime</div>
+                                <div><i class="fas fa-clock text-red-500 mr-1"></i> 28 Days</div>
+                            </div>
+                            <a href="signup.html" class="btn-red w-full block text-center">Choose Plan</a>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow">
+                        <div class="text-center">
+                            <div class="text-2xl font-bold text-red-600 mb-2">₹100</div>
+                            <div class="text-gray-600 mb-4">Full Talktime</div>
+                            <div class="space-y-2 text-sm mb-4">
+                                <div><i class="fas fa-rupee-sign text-red-500 mr-1"></i> ₹100 Talktime</div>
+                                <div><i class="fas fa-clock text-red-500 mr-1"></i> 28 Days</div>
+                            </div>
+                            <a href="signup.html" class="btn-red w-full block text-center">Choose Plan</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Data Plans -->
+            <div class="mb-8">
+                <h2 class="text-2xl font-bold mb-6">Data Only Plans</h2>
+                <div class="grid md:grid-cols-3 lg:grid-cols-4 gap-6">
+                    <div class="bg-white rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow">
+                        <div class="text-center">
+                            <div class="text-2xl font-bold text-red-600 mb-2">₹99</div>
+                            <div class="text-gray-600 mb-4">28 Days</div>
+                            <div class="space-y-2 text-sm mb-4">
+                                <div><i class="fas fa-wifi text-red-500 mr-1"></i> 1GB Data</div>
+                                <div><i class="fas fa-rocket text-red-500 mr-1"></i> 3G/4G Speed</div>
+                            </div>
+                            <a href="signup.html" class="btn-red w-full block text-center">Choose Plan</a>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow">
+                        <div class="text-center">
+                            <div class="text-2xl font-bold text-red-600 mb-2">₹199</div>
+                            <div class="text-gray-600 mb-4">28 Days</div>
+                            <div class="space-y-2 text-sm mb-4">
+                                <div><i class="fas fa-wifi text-red-500 mr-1"></i> 3GB Data</div>
+                                <div><i class="fas fa-rocket text-red-500 mr-1"></i> 3G/4G Speed</div>
+                            </div>
+                            <a href="signup.html" class="btn-red w-full block text-center">Choose Plan</a>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow">
+                        <div class="text-center">
+                            <div class="text-2xl font-bold text-red-600 mb-2">₹299</div>
+                            <div class="text-gray-600 mb-4">28 Days</div>
+                            <div class="space-y-2 text-sm mb-4">
+                                <div><i class="fas fa-wifi text-red-500 mr-1"></i> 6GB Data</div>
+                                <div><i class="fas fa-rocket text-red-500 mr-1"></i> 3G/4G Speed</div>
+                            </div>
+                            <a href="signup.html" class="btn-red w-full block text-center">Choose Plan</a>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow">
+                        <div class="text-center">
+                            <div class="text-2xl font-bold text-red-600 mb-2">₹499</div>
+                            <div class="text-gray-600 mb-4">28 Days</div>
+                            <div class="space-y-2 text-sm mb-4">
+                                <div><i class="fas fa-wifi text-red-500 mr-1"></i> 12GB Data</div>
+                                <div><i class="fas fa-rocket text-red-500 mr-1"></i> 3G/4G Speed</div>
+                            </div>
+                            <a href="signup.html" class="btn-red w-full block text-center">Choose Plan</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="max-w-6xl mx-auto px-4 text-center">
+            <p>&copy; 2024 QuickRecharge. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="api.js"></script>
+    <script>
+        async function loadPlansByOperator(operator = null) {
+            try {
+                const plans = operator ? await mockAPI.getPlansByOperator(operator) : await mockAPI.getPlans();
+                console.log('Loaded plans for operator:', operator, plans);
+            } catch (error) {
+                console.error('Failed to load plans:', error);
+            }
+        }
+        
+        document.querySelectorAll('.operator-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.operator-btn').forEach(b => {
+                    b.classList.remove('border-red-500', 'bg-red-50');
+                });
+                this.classList.add('border-red-500', 'bg-red-50');
+                
+                const operator = this.dataset.operator;
+                loadPlansByOperator(operator);
+            });
+        });
+        
+        document.addEventListener('DOMContentLoaded', () => loadPlansByOperator());
+    </script>
+</body>
+</html>
