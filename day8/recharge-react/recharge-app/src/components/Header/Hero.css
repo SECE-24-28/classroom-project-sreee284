@@ -1,0 +1,16 @@
+.operator-logo {
+  background: #00B0A6;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  display: inline-block;
+}
+
+.recharge-amount {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: white;
+  margin: 1rem 0;
+}
